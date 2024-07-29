@@ -1,0 +1,12 @@
+{% extends 'num_games/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Подтвердить</button>
+    <input type="hidden" name="next" value="{% url 'num_games:index' %}" />
+</form>
+
+{% endblock content %}

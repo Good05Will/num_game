@@ -1,0 +1,19 @@
+{% extends "num_games/base.html" %}
+
+{% block content %}
+    <h4>{{user.username.title}} задумал число...</h4>
+    <h4>ИИ должен отгадать это число... </h4>
+    <h2>его ответ: {{game.guess_num}}</h2>
+    <h3><form method="POST">
+        {% csrf_token %}
+        <label for="feedback">Ваше мнение:</label>
+        <select id="feedback" name="feedback">
+            <option value="меньше">Меньше</option>
+            <option value="больше">Больше</option>
+            <option value="угадал">Угадал</option>
+        </select>
+        <button type="submit">Отправить</button>
+    </form></h3>
+    <h5>..........................................................................................</h5>
+    <p>текущий ход: {{ game.num_rounds }}</p>
+{% endblock content %}

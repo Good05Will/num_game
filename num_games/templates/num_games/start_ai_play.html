@@ -1,0 +1,14 @@
+{% extends "num_games/base.html" %}
+{% block content %}
+    <h3>Задумайте целое положительное число в выбранном диапазоне.</h3>
+    <p>пример (56, 8, 92, 274...)</p>
+    <h3>Запомните задуманное число.</h3>
+    <h5>..........................................................................................</h5>
+    <h3>Введите максимальный диапазон для поиска задуманного числа.</h3>
+    <h3><form method="POST">
+        {% csrf_token %}
+        <label for="max">Диапазон игры от 1 до :</label>
+        <input type="number" id="max" name="max" min="2" max="100000000" value=NULL required>
+        <button type="submit">Начать игру</button>
+    </form></h3>
+{% endblock content %}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <p>
+    <h3><a href="{% url 'num_games:index' %}">NUM GAME</a></h3>
+    {% if user.is_authenticated %}
+    <a href="{% url 'users:logout' %}">Log out</a>
+    <h3>игрок: {{ user.username.upper }}</h3>
+    {% else %}
+    <a href="{% url 'users:login' %}">Log in</a>
+    <a href="{% url 'users:register' %}">Register</a>
+    {% endif %}
+    <h5>..........................................................................................</h5>
+    </p>
+</head>
+<body>{% block content %}{% endblock content %}</body>
+</html>
