@@ -1,15 +1,17 @@
 {% extends 'num_games/base.html' %}
 
 {% block content %}
-  {% if form.errors %}
-    <p>Какая-то суета с твоим логином и паролем. Введи заново.</p>
-  {% endif %}
-
-  <form method="post" action="{% url 'users:login' %}">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button name="submit">Подтвердить</button>
-      <input type="hidden" name="next"
-             value="{% url 'num_games:index' %}" />
-  </form>
+    <h4><form method="POST">
+        {% csrf_token %}
+        <p><label>Введите логин : &nbsp</label>
+        <input type="text" name="username" required></p>
+        <p><label>Введите пароль :</label>
+        <input type="text" name="password" required></p>
+        <p><button name="submit">Подтвердить</button></p>
+    </form></h4>
+    <h5>..........................................................................................</h5>
+    {% if error %}
+    <p>Произошла ошибка с логином или паролем.</p>
+    <p>Попробуйте ещё раз.</p>
+    {% endif %}
 {% endblock content %}
