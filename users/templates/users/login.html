@@ -1,17 +1,20 @@
 {% extends 'num_games/base.html' %}
 
 {% block content %}
-    <h4><form method="POST">
+<div class="card">
+    <div class="card-header"><h5>Вход</h5></div>
+    <div class="card-body">
+        <form method="POST">
         {% csrf_token %}
         <p><label>Введите логин : &nbsp</label>
         <input type="text" name="username" required></p>
         <p><label>Введите пароль :</label>
         <input type="password" name="password" required></p>
-        <p><button name="submit">Подтвердить</button></p>
-    </form></h4>
-    <h5>..........................................................................................</h5>
+        <p><button name="submit" class="btn btn-primary">Подтвердить</button></p>
+    </form>
     {% if error %}
     <p>Произошла ошибка с логином или паролем.</p>
     <p>Попробуйте ещё раз.</p>
     {% endif %}
+    </div></div>
 {% endblock content %}
