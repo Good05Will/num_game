@@ -1,11 +1,25 @@
 {% extends "num_games/base.html" %}
 {% block content %}
-  <h2><a href="{% url 'num_games:start_ai_play' %}">ИГРА 1</a></h2>
-  <h4>Человек загадывает число.</h4>
-  <h4>Компьютер отгадывает.</h4>
-  <h5>..........................................................................................</h5>
-  <h2><a href="{% url 'num_games:start_user_play' %}">ИГРА 2</a></h2>
-  <h4>Компьютер загадывает число.</h4>
-  <h4>Человек отгадывает.</h4>
-  <h5>..........................................................................................</h5>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Player Game</h5>
+        <p  class="card-text">Компьютер загадывает число</p>
+        <p class="card-text">Человек отгадывает</p>
+        <a class="btn btn-primary" href="{% url 'num_games:start_user_play' %}">Start</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">AI Game</h5>
+        <p class="card-text">Человек загадывает число</p>
+        <p class="card-text">Компьютер отгадывает</p>
+        <a class="btn btn-primary" href="{% url 'num_games:start_ai_play' %}">Start</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}

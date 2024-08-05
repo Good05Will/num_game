@@ -16,10 +16,15 @@ ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.now.sh']
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),
+                    ]
+
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
+
 MEDIA_ROOT = 'media/'
+
 MEDIA_URL = '/media/'
 
 
@@ -27,6 +32,8 @@ INSTALLED_APPS = [
     # my apps
     'num_games',
     'users',
+    #
+    'bootstrap5',
     # django apps
     'django.contrib.admin',
     'django.contrib.auth',

@@ -5,7 +5,7 @@ import random
 
 class Game(models.Model):
     '''Базовая модель игры'''
-    player = models.ForeignKey(User, on_delete=models.CASCADE)
+    player = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     start_num = models.IntegerField(default=1)
     end_num = models.IntegerField(default=100)
     num_rounds = models.IntegerField(default=1)

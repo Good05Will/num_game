@@ -1,14 +1,27 @@
 {% extends "num_games/base.html" %}
 {% block content %}
-    <h3>Задумайте целое положительное число в выбранном диапазоне.</h3>
-    <p>пример (56, 8, 92, 274...)</p>
-    <h3>Запомните задуманное число.</h3>
-    <h5>..........................................................................................</h5>
-    <h3>Введите максимальный диапазон для поиска задуманного числа.</h3>
-    <h3><form method="POST">
-        {% csrf_token %}
-        <label for="max">Диапазон игры от 1 до :</label>
-        <input type="number" id="max" name="max" min="2" max="100000000" value=NULL required>
-        <button type="submit">Начать игру</button>
-    </form></h3>
+<div class="card">
+    <div class="card-header"><h5>Отгадывает число AI</h5></div>
+    <div class="card-body">
+        <p class="card-text">Шаг 1: Задумайте целое положительное число</p>
+        <p class="card-text"><small><small><small>
+                    пример (56, 8, 92, 274...)</small></small></small></p>
+        <p class="card-text">Шаг 2: Запомните задуманное число</p>
+        <p class="card-text"><small><small><small>
+                    но не произносите его вслух рядом с компьютером, а то мало ли что ))</small></small></small></p>
+        <p class="card-text">Шаг 3: Введите максимальный диапазон для поиска задуманного числа.</p>
+        <p class="card-text">Шаг 4: Нажмите "Начать игру"</p>
+
+        <div class="card-footer text-muted">
+            <form method="POST">
+                {% csrf_token %}
+                <label for="max">Диапазон игры от 1 до :</label>
+                <input type="number" id="max" name="max" min="2" max="100000000" value=NULL required>
+                <div><p class="navbar-brand"></p></div>
+                <p class="navbar-brand">
+                    <button type="submit" class="btn btn-primary">Начать игру</button>
+                </p></form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

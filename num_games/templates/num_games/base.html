@@ -1,17 +1,59 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <p>
-    <h2><a href="{% url 'num_games:index' %}">NUM GAME</a></h2>
-    {% if user.is_authenticated %}
-    <a href="{% url 'users:logout' %}">Выйти</a>
-    <h4>игрок: {{ user.username.upper }}</h4>
-    {% else %}
-    <a href="{% url 'users:login' %}">Войти</a> &nbsp
-    <a href="{% url 'users:register' %}">Зарегестрироваться</a>
-    {% endif %}
-    <h5>..........................................................................................</h5>
-    </p>
+    <title>NUM GAME</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
-<body>{% block content %}{% endblock content %}</body>
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'num_games:index' %}">NUM GAME</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'num_games:start_user_play' %}">
+              Player game</a></li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'num_games:start_ai_play' %}">
+              AI game</a></li>
+        </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <big><span class="navbar-text me-2">{{ user.username.title }}</span></big>
+        </li>
+        <form action="{% url 'users:logout' %}" method='post'>
+          {% csrf_token %}
+          <button name='submit' class='btn btn-outline-secondary btn-sm'>Log out</button>
+        </form>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:register' %}">Register</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:login' %}">Log in</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+    <main class="container">
+    <div class="pb-2 mb-2 border-bottom">
+      {% block page_header %}{% endblock page_header %}
+    </div>
+    <div>
+      {% block content %}{% endblock content %}
+    </div>
+  </main>
+</body>
 </html>

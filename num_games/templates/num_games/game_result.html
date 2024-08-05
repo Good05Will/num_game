@@ -1,7 +1,11 @@
 {% extends "num_games/base.html" %}
 {% block content %}
-    <h1>ПОБЕДА</h1>
-    <h3>Задуманное число: {{game.guess_num}}</h3>
-    <h3>Количество ходов: {{game.num_rounds}}</h3>
-    <h3><a href="{% url 'num_games:index' %}">Начать новую игру</a></h3>
+<div class="card">
+    <div class="card-header"><h5>ПОБЕДА</h5></div>
+    <div class="card-body">
+        <p class="card-text">Задуманное число: {{game.guess_num}}</p>
+        <p class="card-text">Количество ходов: {{game.num_rounds}}</p>
+        <h3><a class="btn btn-primary" href="{% url 'num_games:index' %}">Выбор новой игры</a></h3>
+    </div>
+</div>
 {% endblock content %}
