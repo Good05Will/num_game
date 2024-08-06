@@ -15,6 +15,10 @@ urlpatterns = [
     path('play_ai/<int:game_id>/', views.play_ai, name='play_ai'),
     # страница результата игры
     path('game_result/<int:game_id>/result/', views.game_result, name='game_result'),
+    # страница с иторией игр пользователя
+    path('history/', views.history, name='history'),
+    # Страница ошибки
+    path('error/', views.error, name='error'),
 ]
 
 

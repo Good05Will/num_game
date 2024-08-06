@@ -16,10 +16,11 @@ def start_ai_play(request):
     if request.method == 'POST':
         player = request.user
         max = int(request.POST['max'])
-        game = GameAI.objects.create(player=player, end_num=max)
+        game = GameAI.objects.create(player=player, max_num=max)
         return redirect('num_games:play_ai', game_id=game.id)
     else:
         return render(request, 'start_ai_play.html')
+
 
 
 @login_required()
@@ -28,11 +29,12 @@ def start_user_play(request):
     if request.method == 'POST':
         player = request.user
         max = int(request.POST['max'])
-        game = GameUser.objects.create(player=player, end_num=max)
+        game = GameUser.objects.create(player=player, max_num=max)
         game.create_secret_num()
         return redirect('num_games:play_user', game_id=game.id)
     else:
         return render(request, 'start_user_play.html')
+
 
 
 @login_required()
@@ -52,10 +54,6 @@ def play_ai(request, game_id):
         if not game.is_finished:
             game.make_guess()
         return render(request, 'play_ai.html', {'game': game})
-
-
-
-
 
 
 
@@ -82,3 +80,16 @@ def game_result(request, game_id):
     '''Определяет итог игры'''
     game = Game.objects.get(pk=game_id)
     return render(request, 'game_result.html', {'game': game})
+
+
+@login_required()
+def history(request):
+    ''' Показывает историю игры пользователя'''
+    games_ai = GameAI.objects.filter(player=request.user).order_by('-date_add')
+    games_player = GameUser.objects.filter(player=request.user).order_by('-date_add')
+    context = {'games_ai':games_ai, 'games_player':games_player}
+    return render(request, 'num_games/histories.html', context)
+
+
+def error(request):
+    return render(request, 'num_games/error.html')

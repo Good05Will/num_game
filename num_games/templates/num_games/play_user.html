@@ -6,9 +6,11 @@
     <div class="card-body">
         {% if game.guess_num != NULL %}
         <div><p class="card-text">ваш предыдущий ответ: {{game.guess_num}}</p>
-        <p class="card-text">ответ компьютера: </p>
-        <h4 class="nav-link">{{game.answer}}</h4>
-        {% endif %}
+            <p class="card-text">ответ компьютера: </p>
+            <h4 class="nav-link">{{game.answer}}</h4>
+            {% else %}
+            <p class="card-text">попробуй его отгадать: </p>
+            {% endif %}
         <form method="POST">
         {% csrf_token %}
         <label>Ваш ответ:</label>
