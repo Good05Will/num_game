@@ -5,16 +5,18 @@
     <div class="card-header"><h5>Вход</h5></div>
     <div class="card-body">
         <form method="POST">
-        {% csrf_token %}
-        <p><label>Введите логин : &nbsp</label>
-        <input type="text" name="username" required></p>
-        <p><label>Введите пароль :</label>
-        <input type="password" name="password" required></p>
-        <p><button name="submit" class="btn btn-primary">Подтвердить</button></p>
-    </form>
-    {% if error %}
-    <p>Произошла ошибка с логином или паролем.</p>
-    <p>Попробуйте ещё раз.</p>
-    {% endif %}
-    </div></div>
+            {% csrf_token %}
+            <p><label>Введите логин : &nbsp</label>
+            <input type="text" name="username" required></p>
+            <p><label>Введите пароль :</label>
+            <input type="password" name="password" required></p>
+            <p><button name="submit" class="btn btn-primary">Подтвердить</button></p>
+        </form>
+        {% if error %}
+        <p>Произошла ошибка с логином или паролем</p>
+        <p>Попробуйте ещё раз или создайте новый аккаунт</p>
+        {% endif %}
+        <a class="btn btn-primary" href="{% url 'users:register' %}">Создать новый аккаунт</a>
+    </div>
+</div>
 {% endblock content %}
