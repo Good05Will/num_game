@@ -15,7 +15,7 @@ class Game(models.Model):
 
     def __str__(self):
         '''Строковое представление модели (для админки)'''
-        return f"№ {self.id}. { self.__class__.__name__ }. {self.player.username.title()}."
+        return f"№ {self.id}. { self.is_finished}. {self.player.username.title()}."
 
 
     def finish_game(self, guessed_number):
